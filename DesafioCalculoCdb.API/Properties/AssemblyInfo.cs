@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // As informações gerais sobre um assembly são controladas através do seguinte
 // conjunto de atributos a seguir. Altere esses valores de atributo para modificar as informações
 // associadas a um assembly.
-[assembly: AssemblyTitle("DesafioCalculoCdb.API")]
+[assembly: AssemblyTitle("DesafioCalculoCdb.Api")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DesafioCalculoCdb.API")]
+[assembly: AssemblyProduct("DesafioCalculoCdb.Api")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // A GUID a seguir será referente à ID do typelib se este projeto for exposto ao COM
-[assembly: Guid("4d911a8d-5d1c-4081-9657-d6acc0bf687d")]
+[assembly: Guid("bb778e3f-20b1-4f40-b060-9574c96d96f4")]
 
 // As informações de versão de um assembly consistem nos quatro valores a seguir:
 //

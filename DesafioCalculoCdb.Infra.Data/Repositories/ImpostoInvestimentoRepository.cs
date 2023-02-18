@@ -16,6 +16,11 @@ namespace DesafioCalculoCdb.Infra.Data.Repositories
             _impostoInvestimentoContext = context;
         }
 
+        public ImpostoInvestimentoRepository()
+        {
+
+        }
+
         public async Task<ImpostoInvestimento> GetById(int id)
         {
             var impostoInvestimento = await _impostoInvestimentoContext.ImpostoInvestimentos.FindAsync(id);

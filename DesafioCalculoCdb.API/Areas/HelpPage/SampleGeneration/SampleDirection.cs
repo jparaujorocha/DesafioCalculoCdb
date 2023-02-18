@@ -1,4 +1,4 @@
-namespace DesafioCalculoCdb.API.Areas.HelpPage
+namespace DesafioCalculoCdb.Api.Areas.HelpPage
 {
     /// <summary>
     /// Indicates whether the sample is used for request or response

@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Description;
 
-namespace DesafioCalculoCdb.API.Areas.HelpPage
+namespace DesafioCalculoCdb.Api.Areas.HelpPage
 {
     public static class ApiDescriptionExtensions
     {

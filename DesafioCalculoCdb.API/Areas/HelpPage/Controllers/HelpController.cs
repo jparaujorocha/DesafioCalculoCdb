@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using DesafioCalculoCdb.API.Areas.HelpPage.ModelDescriptions;
-using DesafioCalculoCdb.API.Areas.HelpPage.Models;
+using DesafioCalculoCdb.Api.Areas.HelpPage.ModelDescriptions;
+using DesafioCalculoCdb.Api.Areas.HelpPage.Models;
 
-namespace DesafioCalculoCdb.API.Areas.HelpPage.Controllers
+namespace DesafioCalculoCdb.Api.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

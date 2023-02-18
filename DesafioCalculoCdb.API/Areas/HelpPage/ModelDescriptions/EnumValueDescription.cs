@@ -1,4 +1,4 @@
-namespace DesafioCalculoCdb.API.Areas.HelpPage.ModelDescriptions
+namespace DesafioCalculoCdb.Api.Areas.HelpPage.ModelDescriptions
 {
     public class EnumValueDescription
     {

@@ -1,7 +1,7 @@
-﻿using DesafioCalculoCdb.Domain.Entities;
+﻿
+using DesafioCalculoCdb.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
 using System.IO;
 
 namespace DesafioCalculoCdb.Infra.Data.Context

@@ -1,6 +1,6 @@
 using System;
 
-namespace DesafioCalculoCdb.API.Areas.HelpPage.ModelDescriptions
+namespace DesafioCalculoCdb.Api.Areas.HelpPage.ModelDescriptions
 {
     public class ParameterAnnotation
     {

@@ -1,6 +1,7 @@
-﻿using System.Web.Http;
+﻿using DesafioCalculoCdb.Api.Helper;
+using System.Web.Http;
 
-namespace DesafioCalculoCdb.API
+namespace DesafioCalculoCdb.Api
 {
     public static class WebApiConfig
     {
@@ -10,6 +11,15 @@ namespace DesafioCalculoCdb.API
 
             // Rotas de API Web
             config.MapHttpAttributeRoutes();
+            
+            MapperConfig.RegisterProfiles();
+            UnityConfig.RegistraComponentes(config);
+
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
         }
     }
 }

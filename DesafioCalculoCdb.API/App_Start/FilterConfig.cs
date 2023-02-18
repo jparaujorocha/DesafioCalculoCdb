@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace DesafioCalculoCdb.API
+namespace DesafioCalculoCdb.Api
 {
     public class FilterConfig
     {

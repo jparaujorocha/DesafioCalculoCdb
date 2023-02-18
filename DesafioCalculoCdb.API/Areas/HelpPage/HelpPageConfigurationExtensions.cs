@@ -11,10 +11,10 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using DesafioCalculoCdb.API.Areas.HelpPage.ModelDescriptions;
-using DesafioCalculoCdb.API.Areas.HelpPage.Models;
+using DesafioCalculoCdb.Api.Areas.HelpPage.ModelDescriptions;
+using DesafioCalculoCdb.Api.Areas.HelpPage.Models;
 
-namespace DesafioCalculoCdb.API.Areas.HelpPage
+namespace DesafioCalculoCdb.Api.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

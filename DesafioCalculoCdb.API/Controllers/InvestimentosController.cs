@@ -1,61 +1,49 @@
-﻿using DesafioCalculoCdb.Application.DTOs;
-using DesafioCalculoCdb.Application.Interfaces;
-using Microsoft.AspNetCore.Mvc;
+﻿using DesafioCalculoCdb.Application.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
+using System.Web.Http;
+using System.Web.Mvc;
 
-namespace DesafioCalculoCdb.API.Controllers
+namespace DesafioCalculoCdb.Api.Controllers
 {
-    /// <summary>
-    /// Teste
-    /// </summary>
-    [ApiController]
-    [Produces("application/json")]
-    public class InvestimentosController : ControllerBase
+    public class InvestimentosController : Controller
     {
-        private readonly IInvestimentoService _investimentoService;
+        IInvestimentoService _investimentoService;
 
-        /// <summary>
-        /// Controller
-        /// </summary>
         public InvestimentosController(IInvestimentoService investimentoService)
         {
             _investimentoService = investimentoService;
         }
 
-        /// <summary>
-        /// Recupera a lista de investimentos ativos
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet(Name = "GetInvestimentosAtivos")]
-        public async Task<ActionResult<IEnumerable<InvestimentoDTO>>> Get()
-        {
-            var listInvestimentosAtivos = await _investimentoService.GetInvestimentosAtivos();
 
-            if (listInvestimentosAtivos == null || listInvestimentosAtivos.Count() == 0)
-            {
-                return NotFound("Não foram encontrados investimentos ativos.");
-            }
-            return Ok(listInvestimentosAtivos);
+        // GET: api/Investimentos
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "value1", "value2" };
         }
 
-        /// <summary>
-        /// Realiza a simulação de um investimento
-        /// </summary>
-        /// <returns></returns>
-        [HttpPost(Name = "PostSimulacaoInvestimento")]
-        public async Task<ActionResult> Post([FromBody] InvestimentoDTO investimentoDTO)
+        // GET: api/Investimentos/5
+        public string Get(int id)
         {
-            if (investimentoDTO == null)
-                return BadRequest("Requisição inválida");
+            return "value";
+        }
 
-            var dadosSimulacaoInvestimento = await _investimentoService.CalculaSimulacaoInvestimentos(investimentoDTO);
+        // POST: api/Investimentos
+        public void Post([FromBody]string value)
+        {
+        }
 
-            return Ok(dadosSimulacaoInvestimento);
+        // PUT: api/Investimentos/5
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // DELETE: api/Investimentos/5
+        public void Delete(int id)
+        {
         }
     }
 }

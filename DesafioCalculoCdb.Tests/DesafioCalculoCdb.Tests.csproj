@@ -109,10 +109,6 @@
     <Folder Include="APITests\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DesafioCalculoCdb.API\DesafioCalculoCdb.API.csproj">
-      <Project>{93db3d45-e49d-40a1-9e54-27fee92b2f07}</Project>
-      <Name>DesafioCalculoCdb.API</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DesafioCalculoCdb.Application\DesafioCalculoCdb.Application.csproj">
       <Project>{7157e1ad-a40e-4061-96a4-ee909357b667}</Project>
       <Name>DesafioCalculoCdb.Application</Name>

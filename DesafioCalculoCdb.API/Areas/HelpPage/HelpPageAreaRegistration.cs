@@ -1,7 +1,7 @@
 using System.Web.Http;
 using System.Web.Mvc;
 
-namespace DesafioCalculoCdb.API.Areas.HelpPage
+namespace DesafioCalculoCdb.Api.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {

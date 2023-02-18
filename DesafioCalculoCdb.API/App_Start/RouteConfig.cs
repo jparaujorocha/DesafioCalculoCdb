@@ -1,8 +1,7 @@
-﻿using System.Web.Http;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace DesafioCalculoCdb.API
+namespace DesafioCalculoCdb.Api
 {
     public class RouteConfig
     {
@@ -11,11 +10,10 @@ namespace DesafioCalculoCdb.API
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-            name: "DefaultApi",
-            url: "v1/{controller}/{id}",
-            defaults: new { id = RouteParameter.Optional });
-
-
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
         }
     }
 }

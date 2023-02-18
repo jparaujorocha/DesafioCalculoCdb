@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioCalculoCdb.API", "DesafioCalculoCdb.API\DesafioCalculoCdb.API.csproj", "{93DB3D45-E49D-40A1-9E54-27FEE92B2F07}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioCalculoCdb.Domain", "DesafioCalculoCdb.Domain\DesafioCalculoCdb.Domain.csproj", "{CCF5ED58-0454-4D6B-B356-FC3C72A96045}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioCalculoCdb.Tests", "DesafioCalculoCdb.Tests\DesafioCalculoCdb.Tests.csproj", "{E02E42CF-9507-491D-B7EF-80B0A5D97DF0}"
@@ -17,16 +15,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioCalculoCdb.Applicati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioCalculoCdb.Shared", "DesafioCalculoCdb.Shared\DesafioCalculoCdb.Shared.csproj", "{EFF4924F-3930-489F-A35E-0A0F23C88D1D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioCalculoCdb.Api", "DesafioCalculoCdb.Api\DesafioCalculoCdb.Api.csproj", "{F15FF0BE-0047-4262-810F-82F3D1B48EF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{93DB3D45-E49D-40A1-9E54-27FEE92B2F07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{93DB3D45-E49D-40A1-9E54-27FEE92B2F07}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{93DB3D45-E49D-40A1-9E54-27FEE92B2F07}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{93DB3D45-E49D-40A1-9E54-27FEE92B2F07}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CCF5ED58-0454-4D6B-B356-FC3C72A96045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CCF5ED58-0454-4D6B-B356-FC3C72A96045}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCF5ED58-0454-4D6B-B356-FC3C72A96045}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,6 +49,10 @@ Global
 		{EFF4924F-3930-489F-A35E-0A0F23C88D1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFF4924F-3930-489F-A35E-0A0F23C88D1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFF4924F-3930-489F-A35E-0A0F23C88D1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F15FF0BE-0047-4262-810F-82F3D1B48EF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F15FF0BE-0047-4262-810F-82F3D1B48EF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F15FF0BE-0047-4262-810F-82F3D1B48EF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F15FF0BE-0047-4262-810F-82F3D1B48EF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

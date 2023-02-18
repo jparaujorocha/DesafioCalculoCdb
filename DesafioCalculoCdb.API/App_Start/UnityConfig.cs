@@ -1,15 +1,16 @@
+using AutoMapper;
+using DesafioCalculoCdb.Api.Controllers;
+using DesafioCalculoCdb.Api.Helper;
 using DesafioCalculoCdb.Application.Interfaces;
-using DesafioCalculoCdb.Application.Mappings;
 using DesafioCalculoCdb.Application.Services;
 using DesafioCalculoCdb.Domain.Interfaces;
 using DesafioCalculoCdb.Infra.Data.Repositories;
 using System;
-using Unity;
-using System.Web.Mvc;
-using Unity.AspNet.WebApi;
 using System.Web.Http;
+using System.Web.Mvc;
+using Unity;
 
-namespace DesafioCalculoCdb.API
+namespace DesafioCalculoCdb.Api
 {
     /// <summary>
     /// Specifies the Unity configuration for the main container.
@@ -50,7 +51,8 @@ namespace DesafioCalculoCdb.API
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
         }
-        public static void RegistraComponentes()
+
+        public static void RegistraComponentes(HttpConfiguration config)
         {
             var container = new UnityContainer();
             container.RegisterType<IImpostoInvestimentoRepository, ImpostoInvestimentoRepository>();
@@ -59,7 +61,11 @@ namespace DesafioCalculoCdb.API
             container.RegisterType<IImpostoInvestimentoService, ImpostoInvestimentoService>();
             container.RegisterType<IInvestimentoService, InvestimentoService>();
             container.RegisterType<IImpostoService, ImpostoService>();
-            GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
+            container.RegisterInstance<IMapper>(MapperConfig.Mapper);
+            container.RegisterType<IController, InvestimentosController>();
+
+            DependencyResolver.SetResolver(new Unity.Mvc5.UnityDependencyResolver(container));
+            config.DependencyResolver = new Unity.AspNet.WebApi.UnityDependencyResolver(container);
         }
     }
 }

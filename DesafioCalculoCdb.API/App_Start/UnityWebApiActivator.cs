@@ -2,10 +2,10 @@ using System.Web.Http;
 
 using Unity.AspNet.WebApi;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(DesafioCalculoCdb.API.UnityWebApiActivator), nameof(DesafioCalculoCdb.API.UnityWebApiActivator.Start))]
-[assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(DesafioCalculoCdb.API.UnityWebApiActivator), nameof(DesafioCalculoCdb.API.UnityWebApiActivator.Shutdown))]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(DesafioCalculoCdb.Api.UnityWebApiActivator), nameof(DesafioCalculoCdb.Api.UnityWebApiActivator.Start))]
+[assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(DesafioCalculoCdb.Api.UnityWebApiActivator), nameof(DesafioCalculoCdb.Api.UnityWebApiActivator.Shutdown))]
 
-namespace DesafioCalculoCdb.API
+namespace DesafioCalculoCdb.Api
 {
     /// <summary>
     /// Provides the bootstrapping for integrating Unity with WebApi when it is hosted in ASP.NET.
@@ -15,7 +15,7 @@ namespace DesafioCalculoCdb.API
         /// <summary>
         /// Integrates Unity when the application starts.
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
             // Use UnityHierarchicalDependencyResolver if you want to use
             // a new child container for each IHttpController resolution.
