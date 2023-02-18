@@ -18,7 +18,7 @@ namespace DesafioCalculoCdb.API
             var thisAssembly = typeof(SwaggerConfig).Assembly;
             GlobalConfiguration.Configuration
               .EnableSwagger()
-              .EnableSwaggerUi();
+              .EnableSwaggerUi(); ;
         }
     }
 }
