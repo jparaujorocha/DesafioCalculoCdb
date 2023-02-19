@@ -6,8 +6,9 @@ namespace DesafioCalculoCdb.Application.Interfaces
 {
     public interface IInvestimentoService
     {
-        Task<IEnumerable<InvestimentoDTO>> GetInvestimentosAtivos();
-        Task<InvestimentoDTO> GetById(int id);
-        Task<InvestimentoDTO> CalculaSimulacaoInvestimentos(InvestimentoDTO dadosInvestimento);
+        Task<IEnumerable<InvestimentoDto>> GetInvestimentosAtivos();
+        Task<InvestimentoDto> GetById(int id);
+        Task CalculaSimulacaoInvestimentos(InvestimentoDto dadosInvestimento);
+        bool VerificaExistenciaDeInvestimento(int idInvestimento);
     }
 }

@@ -24,45 +24,45 @@ namespace DesafioCalculoCdb.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<InvestimentoDTO> GetById(int id)
+        public async Task<InvestimentoDto> GetById(int id)
         {
             var investimentoEntity = await _investimentoRepository.GetById(id);
-            return _mapper.Map<InvestimentoDTO>(investimentoEntity);
+            return _mapper.Map<InvestimentoDto>(investimentoEntity);
+        }
+        public bool VerificaExistenciaDeInvestimento(int idInvestimento)
+        {
+            return _investimentoRepository.VerificaExistenciaInvestimento(idInvestimento);
         }
 
-        public async Task<IEnumerable<InvestimentoDTO>> GetInvestimentosAtivos()
+        public async Task<IEnumerable<InvestimentoDto>> GetInvestimentosAtivos()
         {
             var listInvestimento = await _investimentoRepository.GetInvestimentosAtivos();
-            return _mapper.Map<IEnumerable<InvestimentoDTO>>(listInvestimento);
+            return _mapper.Map<IEnumerable<InvestimentoDto>>(listInvestimento);
         }
 
-        public async Task<InvestimentoDTO> CalculaSimulacaoInvestimentos(InvestimentoDTO dadosInvestimento)
+        public async Task CalculaSimulacaoInvestimentos(InvestimentoDto dadosInvestimento)
         {
             if (dadosInvestimento.PrazoResgateAplicacao <= 0)
                 throw new Exception("Prazo de resgate deve ser maior que zero.");
             if (dadosInvestimento.ValorInicialInvestimento <= 0)
                 throw new Exception("Valor Inicial do Investimento deve ser maior que zero.");
-
-            var investimentoEntity = await GetById(dadosInvestimento.Id);
-
-            if (investimentoEntity == null || investimentoEntity.Id == 0)
+            if (!VerificaExistenciaDeInvestimento(dadosInvestimento.Id))
                 throw new Exception("Investimento não encontrado no banco de dados.");
 
-            switch (investimentoEntity.Id)
+            switch (dadosInvestimento.Id)
             {
                 case (int)EnumInvestimento.CDB:
-                    CalculaCdb(investimentoEntity, dadosInvestimento.PrazoResgateAplicacao, dadosInvestimento.ValorInicialInvestimento);
+                    CalculaCdb(dadosInvestimento, dadosInvestimento.PrazoResgateAplicacao, dadosInvestimento.ValorInicialInvestimento);
                     break;
             }
-            return investimentoEntity;
         }
 
         [ExcludeFromCodeCoverage]
-        private void CalculaCdb(InvestimentoDTO investimentoEntity, int prazoResgate, decimal valorInicial)
+        private void CalculaCdb(InvestimentoDto investimentoEntity, int prazoResgate, decimal valorInicial)
         {
-            investimentoEntity.ListInvestimentoMensalDto = new List<InvestimentoMensalDTO>(prazoResgate)
+            investimentoEntity.ListInvestimentoMensalDto = new List<InvestimentoMensalDto>(prazoResgate)
             {
-                new InvestimentoMensalDTO
+                new InvestimentoMensalDto
                 {
                     NumeroMes = 1,
                     ValorInicialMensal = valorInicial,
@@ -74,7 +74,7 @@ namespace DesafioCalculoCdb.Application.Services
             {
                 investimentoEntity.ListInvestimentoMensalDto.Add(
 
-                new InvestimentoMensalDTO
+                new InvestimentoMensalDto
                 {
                     NumeroMes = a + 1,
                     ValorInicialMensal = investimentoEntity.ListInvestimentoMensalDto[a - 1].ValorFinalMensal,

@@ -8,5 +8,6 @@ namespace DesafioCalculoCdb.Domain.Interfaces
     {
         Task<IEnumerable<Investimento>> GetInvestimentosAtivos();
         Task<Investimento> GetById(int id);
+        bool VerificaExistenciaInvestimento(int idInvestimento);
     }
 }

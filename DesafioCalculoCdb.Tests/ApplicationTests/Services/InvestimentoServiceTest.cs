@@ -45,8 +45,8 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
 
         private Investimento investimentoMockValido = new Investimento("CDB", DateTime.Now, null, 0.9m, 108, true, 1);
 
-        private IEnumerable<InvestimentoDTO> listInvestimentoDtoMockValido;
-        private InvestimentoDTO investimentoDtoMockValido;
+        private IEnumerable<InvestimentoDto> listInvestimentoDtoMockValido;
+        private InvestimentoDto investimentoDtoMockValido;
 
         private IEnumerable<ImpostoDTO> listImpostoDtoMockValido;
 
@@ -56,7 +56,7 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
         {
             _mockInvestimentoRepository = new Mock<IInvestimentoRepository>();
             _mockImpostoService = new Mock<IImpostoService>();
-            listInvestimentoDtoMockValido = _mockIMapper.Map<IEnumerable<InvestimentoDTO>>(listInvestimentoMockValido);
+            listInvestimentoDtoMockValido = _mockIMapper.Map<IEnumerable<InvestimentoDto>>(listInvestimentoMockValido);
 
 
             _mockInvestimentoRepository.Setup(a => a.GetInvestimentosAtivos()).Returns(Task.FromResult(listInvestimentoMockValido));
@@ -73,7 +73,7 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
             listInvestimentoMockValido = null;
             _mockInvestimentoRepository = new Mock<IInvestimentoRepository>();
             _mockImpostoService = new Mock<IImpostoService>();
-            listInvestimentoDtoMockValido = new List<InvestimentoDTO>();
+            listInvestimentoDtoMockValido = new List<InvestimentoDto>();
 
             _mockInvestimentoRepository.Setup(a => a.GetInvestimentosAtivos()).Returns(Task.FromResult(listInvestimentoMockValido));
 
@@ -90,7 +90,7 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
         {
             _mockInvestimentoRepository = new Mock<IInvestimentoRepository>();
             _mockImpostoService = new Mock<IImpostoService>();
-            investimentoDtoMockValido = _mockIMapper.Map<InvestimentoDTO>(investimentoMockValido);
+            investimentoDtoMockValido = _mockIMapper.Map<InvestimentoDto>(investimentoMockValido);
 
 
             _mockInvestimentoRepository.Setup(a => a.GetById(It.Is<int>(b => b == 1))).Returns(Task.FromResult(investimentoMockValido));
@@ -107,7 +107,7 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
         {
             _mockInvestimentoRepository = new Mock<IInvestimentoRepository>();
             _mockImpostoService = new Mock<IImpostoService>();
-            investimentoDtoMockValido = _mockIMapper.Map<InvestimentoDTO>(investimentoMockValido);
+            investimentoDtoMockValido = _mockIMapper.Map<InvestimentoDto>(investimentoMockValido);
 
 
             _mockInvestimentoRepository.Setup(a => a.GetById(It.Is<int>(b => b == 1))).Returns(Task.FromResult(investimentoMockValido));
@@ -135,10 +135,10 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
         {
             _mockInvestimentoRepository = new Mock<IInvestimentoRepository>();
             _mockImpostoService = new Mock<IImpostoService>();
-            listInvestimentoDtoMockValido = _mockIMapper.Map<IEnumerable<InvestimentoDTO>>(listInvestimentoMockValido);
+            listInvestimentoDtoMockValido = _mockIMapper.Map<IEnumerable<InvestimentoDto>>(listInvestimentoMockValido);
             listImpostoDtoMockValido = _mockIMapper.Map<IEnumerable<ImpostoDTO>>(listImpostoMockValido);
 
-            investimentoDtoMockValido = new InvestimentoDTO
+            investimentoDtoMockValido = new InvestimentoDto
             {
                 Id = idInvestimento,
                 PrazoResgateAplicacao = prazoResgate,
@@ -163,7 +163,7 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
         {
             _mockImpostoService = new Mock<IImpostoService>();
             _mockInvestimentoRepository = new Mock<IInvestimentoRepository>();
-            investimentoDtoMockValido = new InvestimentoDTO
+            investimentoDtoMockValido = new InvestimentoDto
             {
                 Id = idInvestimento,
                 PrazoResgateAplicacao = prazoResgate,
@@ -185,7 +185,7 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
         {
             _mockImpostoService = new Mock<IImpostoService>();
             _mockInvestimentoRepository = new Mock<IInvestimentoRepository>();
-            investimentoDtoMockValido = new InvestimentoDTO
+            investimentoDtoMockValido = new InvestimentoDto
             {
                 Id = idInvestimento,
                 PrazoResgateAplicacao = prazoResgate,
@@ -207,7 +207,7 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
         {
             _mockImpostoService = new Mock<IImpostoService>();
             _mockInvestimentoRepository = new Mock<IInvestimentoRepository>();
-            investimentoDtoMockValido = new InvestimentoDTO
+            investimentoDtoMockValido = new InvestimentoDto
             {
                 Id = idInvestimento,
                 PrazoResgateAplicacao = prazoResgate,

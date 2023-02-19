@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DesafioCalculoCdb.Application.DTOs
 {
-    public class InvestimentoDTO
+    public class InvestimentoDto
     {
         public int Id { get; set; }
 
@@ -17,7 +17,7 @@ namespace DesafioCalculoCdb.Application.DTOs
 
         [Required(ErrorMessage = "O prazo de resgate da aplicação é obrigatório.")]
         [DisplayName("Prazo de resgate da aplicação")]
-        [Range(21, 999)]
+        [Range(1, 999)]
         public int PrazoResgateAplicacao { get; set; }
 
         [Required(ErrorMessage = "O Valor inicial do investimento é obrigatório.")]
@@ -55,10 +55,10 @@ namespace DesafioCalculoCdb.Application.DTOs
         [DisplayName("Valor Taxa Investimento")]
         public decimal ValorTaxaInvestimento { get; set; }
 
-        public IList<InvestimentoMensalDTO> ListInvestimentoMensalDto { get; set; }
+        public IList<InvestimentoMensalDto> ListInvestimentoMensalDto { get; set; }
     }
 
-    public class InvestimentoMensalDTO
+    public class InvestimentoMensalDto
     {
         public int NumeroMes { get; set; }
 

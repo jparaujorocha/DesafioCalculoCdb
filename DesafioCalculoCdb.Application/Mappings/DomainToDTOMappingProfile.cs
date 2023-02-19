@@ -10,7 +10,7 @@ namespace DesafioCalculoCdb.Application.Mappings
         {
             CreateMap<Imposto, ImpostoDTO>().ReverseMap();
             CreateMap<ImpostoInvestimento, ImpostoInvestimentoDTO>().ReverseMap();
-            CreateMap<Investimento, InvestimentoDTO>().ReverseMap();
+            CreateMap<Investimento, InvestimentoDto>().ReverseMap();
         }
     }
 }

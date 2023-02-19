@@ -161,7 +161,7 @@
   <ItemGroup>
     <Compile Include="DTOs\ImpostoDTO.cs" />
     <Compile Include="DTOs\ImpostoInvestimentoDTO.cs" />
-    <Compile Include="DTOs\InvestimentoDTO.cs" />
+    <Compile Include="DTOs\InvestimentoDto.cs" />
     <Compile Include="Interfaces\IImpostoInvestimentoService.cs" />
     <Compile Include="Interfaces\IImpostoService.cs" />
     <Compile Include="Interfaces\IInvestimentoService.cs" />

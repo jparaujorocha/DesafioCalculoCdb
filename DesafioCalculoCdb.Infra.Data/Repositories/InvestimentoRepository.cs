@@ -1,8 +1,10 @@
 ﻿using DesafioCalculoCdb.Domain.Entities;
 using DesafioCalculoCdb.Domain.Interfaces;
 using DesafioCalculoCdb.Infra.Data.Context;
+using Microsoft.EntityFrameworkCore.Internal;
 using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DesafioCalculoCdb.Infra.Data.Repositories
@@ -20,9 +22,15 @@ namespace DesafioCalculoCdb.Infra.Data.Repositories
             return investimento;
         }
 
+        public bool VerificaExistenciaInvestimento(int idInvestimento)
+        {
+
+            return _investimentoContext.Investimentos.Any(a => a.Id == idInvestimento);
+        }
+
         public async Task<IEnumerable<Investimento>> GetInvestimentosAtivos()
         {
-            return await _investimentoContext.Investimentos.Include(a => a.Ativo == true).ToListAsync();
+            return await _investimentoContext.Investimentos.Where(a => a.Ativo).Include(b => b.ImpostoInvestimentos).ToListAsync();
         }
     }
 }
