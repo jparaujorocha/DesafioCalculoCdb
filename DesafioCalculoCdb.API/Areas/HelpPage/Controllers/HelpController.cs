@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Web.Http;
 using System.Web.Mvc;
 using DesafioCalculoCdb.Api.Areas.HelpPage.ModelDescriptions;
@@ -9,6 +10,7 @@ namespace DesafioCalculoCdb.Api.Areas.HelpPage.Controllers
     /// <summary>
     /// The controller that will handle requests for the help page.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class HelpController : Controller
     {
         private const string ErrorViewName = "Error";

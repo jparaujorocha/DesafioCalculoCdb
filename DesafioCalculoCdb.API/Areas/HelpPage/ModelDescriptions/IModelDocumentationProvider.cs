@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace DesafioCalculoCdb.Api.Areas.HelpPage.ModelDescriptions
