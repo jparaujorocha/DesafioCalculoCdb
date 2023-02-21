@@ -94,8 +94,8 @@ namespace DesafioCalculoCdb.Infra.Data.Migrations
                 columns: new[] { "Id", "Ativo", "DataDeCriacao", "DataDeFinalizacao", "Nome", "ValorTaxaBanco", "ValorTaxaInvestimento" },
                 values: new object[,]
                 {
-                    { 1, true, new DateTime(2023, 2, 20, 13, 12, 40, 248, DateTimeKind.Local).AddTicks(663), null, "CDB", 108m, 0.9m },
-                    { 2, false, new DateTime(2023, 2, 20, 13, 12, 40, 249, DateTimeKind.Local).AddTicks(626), null, "OUTROS", 112m, 0.1m }
+                    { 1, true, new DateTime(2023, 2, 21, 11, 15, 11, 196, DateTimeKind.Local).AddTicks(9707), null, "CDB", 108m, 0.9m },
+                    { 2, false, new DateTime(2023, 2, 21, 11, 15, 11, 196, DateTimeKind.Local).AddTicks(9707), null, "OUTROS", 112m, 0.1m }
                 });
 
             migrationBuilder.InsertData(
@@ -123,10 +123,10 @@ namespace DesafioCalculoCdb.Infra.Data.Migrations
                 columns: new[] { "Id", "Ativo", "DataFim", "DataInicio", "IdImposto", "IdInvestimento" },
                 values: new object[,]
                 {
-                    { 1, true, null, new DateTime(2023, 2, 20, 13, 12, 40, 237, DateTimeKind.Local).AddTicks(952), 1, 1 },
-                    { 2, true, null, new DateTime(2023, 2, 20, 13, 12, 40, 242, DateTimeKind.Local).AddTicks(807), 2, 1 },
-                    { 3, true, null, new DateTime(2023, 2, 20, 13, 12, 40, 242, DateTimeKind.Local).AddTicks(807), 3, 1 },
-                    { 4, true, null, new DateTime(2023, 2, 20, 13, 12, 40, 242, DateTimeKind.Local).AddTicks(807), 4, 1 }
+                    { 1, true, null, new DateTime(2023, 2, 21, 11, 15, 11, 186, DateTimeKind.Local).AddTicks(8957), 1, 1 },
+                    { 2, true, null, new DateTime(2023, 2, 21, 11, 15, 11, 194, DateTimeKind.Local).AddTicks(9553), 2, 1 },
+                    { 3, true, null, new DateTime(2023, 2, 21, 11, 15, 11, 194, DateTimeKind.Local).AddTicks(9553), 3, 1 },
+                    { 4, true, null, new DateTime(2023, 2, 21, 11, 15, 11, 194, DateTimeKind.Local).AddTicks(9553), 4, 1 }
                 });
 
             migrationBuilder.CreateIndex(

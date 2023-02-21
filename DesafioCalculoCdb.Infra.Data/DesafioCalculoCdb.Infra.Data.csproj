@@ -232,9 +232,9 @@
     <Compile Include="EntitiesConfiguration\InvestimentoConfiguration.cs" />
     <Compile Include="EntitiesConfiguration\TipoImpostoConfiguration.cs" />
     <Compile Include="Identity\ApplicationUser.cs" />
-    <Compile Include="Migrations\20230220161241_DesafioCalculo.cs" />
-    <Compile Include="Migrations\20230220161241_DesafioCalculo.designer.cs">
-      <DependentUpon>20230220161241_DesafioCalculo.cs</DependentUpon>
+    <Compile Include="Migrations\20230221141512_DesafioCalculo.cs" />
+    <Compile Include="Migrations\20230221141512_DesafioCalculo.designer.cs">
+      <DependentUpon>20230221141512_DesafioCalculo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

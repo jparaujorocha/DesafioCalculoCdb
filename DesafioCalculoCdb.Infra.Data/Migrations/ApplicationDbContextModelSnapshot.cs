@@ -116,7 +116,7 @@ namespace DesafioCalculoCdb.Infra.Data.Migrations
                         {
                             Id = 1,
                             Ativo = true,
-                            DataInicio = new DateTime(2023, 2, 20, 13, 12, 40, 237, DateTimeKind.Local).AddTicks(952),
+                            DataInicio = new DateTime(2023, 2, 21, 11, 15, 11, 186, DateTimeKind.Local).AddTicks(8957),
                             IdImposto = 1,
                             IdInvestimento = 1
                         },
@@ -124,7 +124,7 @@ namespace DesafioCalculoCdb.Infra.Data.Migrations
                         {
                             Id = 2,
                             Ativo = true,
-                            DataInicio = new DateTime(2023, 2, 20, 13, 12, 40, 242, DateTimeKind.Local).AddTicks(807),
+                            DataInicio = new DateTime(2023, 2, 21, 11, 15, 11, 194, DateTimeKind.Local).AddTicks(9553),
                             IdImposto = 2,
                             IdInvestimento = 1
                         },
@@ -132,7 +132,7 @@ namespace DesafioCalculoCdb.Infra.Data.Migrations
                         {
                             Id = 3,
                             Ativo = true,
-                            DataInicio = new DateTime(2023, 2, 20, 13, 12, 40, 242, DateTimeKind.Local).AddTicks(807),
+                            DataInicio = new DateTime(2023, 2, 21, 11, 15, 11, 194, DateTimeKind.Local).AddTicks(9553),
                             IdImposto = 3,
                             IdInvestimento = 1
                         },
@@ -140,7 +140,7 @@ namespace DesafioCalculoCdb.Infra.Data.Migrations
                         {
                             Id = 4,
                             Ativo = true,
-                            DataInicio = new DateTime(2023, 2, 20, 13, 12, 40, 242, DateTimeKind.Local).AddTicks(807),
+                            DataInicio = new DateTime(2023, 2, 21, 11, 15, 11, 194, DateTimeKind.Local).AddTicks(9553),
                             IdImposto = 4,
                             IdInvestimento = 1
                         });
@@ -182,7 +182,7 @@ namespace DesafioCalculoCdb.Infra.Data.Migrations
                         {
                             Id = 1,
                             Ativo = true,
-                            DataDeCriacao = new DateTime(2023, 2, 20, 13, 12, 40, 248, DateTimeKind.Local).AddTicks(663),
+                            DataDeCriacao = new DateTime(2023, 2, 21, 11, 15, 11, 196, DateTimeKind.Local).AddTicks(9707),
                             Nome = "CDB",
                             ValorTaxaBanco = 108m,
                             ValorTaxaInvestimento = 0.9m
@@ -191,7 +191,7 @@ namespace DesafioCalculoCdb.Infra.Data.Migrations
                         {
                             Id = 2,
                             Ativo = false,
-                            DataDeCriacao = new DateTime(2023, 2, 20, 13, 12, 40, 249, DateTimeKind.Local).AddTicks(626),
+                            DataDeCriacao = new DateTime(2023, 2, 21, 11, 15, 11, 196, DateTimeKind.Local).AddTicks(9707),
                             Nome = "OUTROS",
                             ValorTaxaBanco = 112m,
                             ValorTaxaInvestimento = 0.1m

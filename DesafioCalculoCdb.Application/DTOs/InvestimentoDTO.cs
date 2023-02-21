@@ -34,7 +34,13 @@ namespace DesafioCalculoCdb.Application.DTOs
         [DisplayFormat(DataFormatString = "{0:N2}")]
         [DataType(DataType.Currency)]
         [DisplayName("Valor Final do investimento")]
-        public decimal ValorFinalInvestimento { get; set; }
+        public decimal ValorFinalInvestimentoLiquido { get; set; }
+
+        [Column(TypeName = "decimal(18,2)")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        [DataType(DataType.Currency)]
+        [DisplayName("Valor Final do investimento")]
+        public decimal ValorFinalInvestimentoBruto { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
         [DisplayFormat(DataFormatString = "{0:C2}")]

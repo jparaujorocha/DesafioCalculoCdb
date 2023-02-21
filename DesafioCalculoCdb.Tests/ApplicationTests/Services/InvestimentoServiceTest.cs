@@ -154,7 +154,7 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
 
             investimentoService.CalculaSimulacaoInvestimentos(investimentoDtoMockValido);
 
-            Assert.Equal(valorEsperadoRetorno, Math.Round(investimentoDtoMockValido.ValorFinalInvestimento, 2));
+            Assert.Equal(valorEsperadoRetorno, Math.Round(investimentoDtoMockValido.ValorFinalInvestimentoLiquido, 2));
         }
 
         [Theory]

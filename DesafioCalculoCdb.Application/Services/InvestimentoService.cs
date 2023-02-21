@@ -87,11 +87,11 @@ namespace DesafioCalculoCdb.Application.Services
                                        (1 + ((investimentoEntity.ValorTaxaInvestimento / 100) * (investimentoEntity.ValorTaxaBanco / 100))))
                 });
             }
-
+            investimentoEntity.ValorFinalInvestimentoBruto = investimentoEntity.ListInvestimentoMensalDto.Last().ValorFinalMensal;
             investimentoEntity.ValorImposto = _impostoService.CalculaImpostoLiquido(investimentoEntity.Id, prazoResgate);
 
-            investimentoEntity.ValorFinalInvestimento = investimentoEntity.ListInvestimentoMensalDto.Last().ValorFinalMensal -
-                                                        (investimentoEntity.ListInvestimentoMensalDto.Last().ValorFinalMensal *
+            investimentoEntity.ValorFinalInvestimentoLiquido = investimentoEntity.ValorFinalInvestimentoBruto -
+                                                        (investimentoEntity.ValorFinalInvestimentoBruto *
                                                         (investimentoEntity.ValorImposto / 100));
         }
 

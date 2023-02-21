@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Mvc;
 
 namespace DesafioCalculoCdb.Api.Controllers
@@ -14,6 +15,7 @@ namespace DesafioCalculoCdb.Api.Controllers
     /// Classe para ações envolvendo investimentos
     /// </summary>
     ///
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [ApiController]
     [Produces("application/json")]
     public class InvestimentosController : System.Web.Mvc.Controller
@@ -59,7 +61,7 @@ namespace DesafioCalculoCdb.Api.Controllers
         /// <param name="investimentoDto"></param>
         /// <returns></returns>
         [Microsoft.AspNetCore.Mvc.HttpPost]
-        public async Task<System.Web.Mvc.ActionResult> PostCalcularInvestimentos([System.Web.Http.FromBody] InvestimentoDto investimentoDto)
+        public async Task<System.Web.Mvc.ActionResult> PostCalcularInvestimentos([Microsoft.AspNetCore.Mvc.FromBody] InvestimentoDto investimentoDto)
         {
             if (investimentoDto == null || investimentoDto.Id == 0)
                 throw new Exception("É necessário selecionar um investimento!");

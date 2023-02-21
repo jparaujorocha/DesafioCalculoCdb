@@ -98,7 +98,8 @@ namespace DesafioCalculoCdb.Tests.APITests
             var respostaInvestimentoDtoMockValido = _mockIMapper.Map<InvestimentoDto>(listInvestimentoMockValido.FirstOrDefault(a => a.Id == 1));
 
             respostaInvestimentoDtoMockValido.ValorImposto = 22.50m;
-            respostaInvestimentoDtoMockValido.ValorFinalInvestimento = 3950.69610380000000m;
+            respostaInvestimentoDtoMockValido.ValorFinalInvestimentoBruto = 5097.67239200000m;
+            respostaInvestimentoDtoMockValido.ValorFinalInvestimentoLiquido = 3950.69610380000000m;
 
             respostaInvestimentoDtoMockValido.ListInvestimentoMensalDto = new List<InvestimentoMensalDto>()
             {
