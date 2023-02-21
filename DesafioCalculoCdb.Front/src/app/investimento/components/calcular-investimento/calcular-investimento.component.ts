@@ -9,6 +9,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 import { map } from 'rxjs/operators';
 
+
 @Component({
   selector: 'app-calcular-investimento',
   templateUrl: './calcular-investimento.component.html',
@@ -49,15 +50,14 @@ export class CalcularInvestimentoComponent implements OnInit {
   }
   catch(err)
   {
-    console.log("Erro: " + err);
     this.message = 'Erro durante o processo de carga de investimentos.'
   }
   } 
 
-  private calcularInvestimento(investimento: InvestimentoDto) {  
+  private calcularInvestimento() {  
     try{
-      var teste = JSON.stringify(investimento);
-      this.CalcularInvestimentoService.calcularInvestimento(investimento).subscribe((data) => {
+      var teste = JSON.stringify(this.investimentoCalculado);
+      this.CalcularInvestimentoService.calcularInvestimento(this.investimentoCalculado).subscribe((data) => {
       this.loading = false;
       this.investimentoCalculado = data      
       this.message = '';
@@ -66,7 +66,6 @@ export class CalcularInvestimentoComponent implements OnInit {
   }
   catch(err)
   {
-    console.log("Erro: " + err);    
     this.tabelaCalculoInvestimentoVisible = false;
     this.message = 'Erro durante o processo de cálculo de investimentos.'
   }
@@ -97,14 +96,14 @@ private validarInformacoesParaCalculo = (formInvestimentoValue : any) : boolean 
       return false;    
   }
 
-  this.investimentoCalculado.prazoResgateAplicacao = Number(formInvestimentoValue.prazoDeResgate);
-  this.investimentoCalculado.valorInicialInvestimento = Number(formInvestimentoValue.valorInvestimento);
+  this.investimentoCalculado.PrazoResgateAplicacao = Number(formInvestimentoValue.prazoDeResgate);
+  this.investimentoCalculado.ValorInicialInvestimento = Number(formInvestimentoValue.valorInvestimento);
 
   return true;
 }
 public realizarCalculoInvestimento = (formInvestimentoValue : any) => {
   if (this.validarInformacoesParaCalculo(formInvestimentoValue)) {
-    this.calcularInvestimento(this.investimentoCalculado);
+    this.calcularInvestimento();
   }
 }
 

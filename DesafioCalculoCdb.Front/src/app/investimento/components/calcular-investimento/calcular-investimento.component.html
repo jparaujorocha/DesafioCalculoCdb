@@ -1,16 +1,16 @@
-    <form [formGroup]="formInvestimento"
+<form [formGroup]="formInvestimento"
           (ngSubmit)="realizarCalculoInvestimento(formInvestimento.value)"
           class="dados-invest-form">
     
       <fieldset>
         <h1>Simulador de Investimento</h1>
-          
+        
         <mat-form-field class="dados-invest-full-width">
           <mat-label>Selecione o Investimento</mat-label>
           <mat-select [(ngModel)]="investimentoCalculado" [ngModelOptions]="{standalone: true}"
           name="investimentoCalculado">
             <mat-option *ngFor="let investimento of allInvestimentosAtivos" [value]="investimento">
-              {{investimento.nome}}
+              {{this.investimento.Nome}}
             </mat-option>
           </mat-select>
         </mat-form-field>   
@@ -37,47 +37,47 @@
 
             <ng-container matColumnDef="nome">
               <th mat-header-cell *matHeaderCellDef>Nome</th>
-              <td mat-cell *matCellDef="let element">{{element.nome}}</td>
+              <td mat-cell *matCellDef="let element">{{element.Nome}}</td>
             </ng-container>
 
             <ng-container matColumnDef="prazoResgateAplicacao">
               <th mat-header-cell *matHeaderCellDef>Prazo de Resgate</th>
-              <td mat-cell *matCellDef="let element">{{element.prazoResgateAplicacao}} meses</td>
+              <td mat-cell *matCellDef="let element">{{element.PrazoResgateAplicacao}} meses</td>
             </ng-container>
 
             <ng-container matColumnDef="valorInicialInvestimento">
                 <th mat-header-cell *matHeaderCellDef>Valor Inicial do Investimento</th>
-                <td mat-cell *matCellDef="let element">R$ {{element.valorInicialInvestimento}}</td>
+                <td mat-cell *matCellDef="let element">R$ {{element.ValorInicialInvestimento}}</td>
               </ng-container>
 
               <ng-container matColumnDef="valorFinalInvestimento">
                   <th mat-header-cell *matHeaderCellDef>Valor Final do Investimento</th>
-                  <td mat-cell *matCellDef="let element">R$ {{element.valorFinalInvestimento}}</td>
+                  <td mat-cell *matCellDef="let element">R$ {{element.ValorFinalInvestimento}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="valorTaxaInvestimento">
                     <th mat-header-cell *matHeaderCellDef>Taxa de investimento</th>
-                    <td mat-cell *matCellDef="let element">{{element.valorTaxaInvestimento}}%</td>
+                    <td mat-cell *matCellDef="let element">{{element.ValorTaxaInvestimento}}%</td>
                 </ng-container>
 
                 <ng-container matColumnDef="valorTaxaBanco">
                     <th mat-header-cell *matHeaderCellDef>Taxa do Banco</th>
-                    <td mat-cell *matCellDef="let element">{{element.valorTaxaBanco}}%</td>
+                    <td mat-cell *matCellDef="let element">{{element.ValorTaxaBanco}}%</td>
                 </ng-container>
 
                 <ng-container matColumnDef="valorFinalInvestimentoBruto">
                     <th mat-header-cell *matHeaderCellDef>Valor Final Bruto</th>
-                    <td mat-cell *matCellDef="let element">{{element.valorFinalInvestimentoBruto}}%</td>
+                    <td mat-cell *matCellDef="let element">{{element.ValorFinalInvestimentoBruto}}%</td>
                 </ng-container>
 
                 <ng-container matColumnDef="valorImposto">
                     <th mat-header-cell *matHeaderCellDef>Valor do Imposto</th>
-                    <td mat-cell *matCellDef="let element">{{element.valorImposto}}%</td>
+                    <td mat-cell *matCellDef="let element">{{element.ValorImposto}}%</td>
                 </ng-container>
 
                 <ng-container matColumnDef="valorFinalInvestimentoLiquido">
                     <th mat-header-cell *matHeaderCellDef>Valor Final Líquido</th>
-                    <td mat-cell *matCellDef="let element">{{element.valorFinalInvestimentoBruto}}%</td>
+                    <td mat-cell *matCellDef="let element">{{element.ValorFinalInvestimentoBruto}}%</td>
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="colunasTabela"></tr>
         </table>

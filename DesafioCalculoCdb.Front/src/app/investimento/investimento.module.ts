@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CalcularInvestimentoComponent } from './components';
 import { CalcularInvestimentoService } from './services';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
@@ -32,7 +31,6 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
   ],
   imports: [
     CommonModule ,
-    BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,

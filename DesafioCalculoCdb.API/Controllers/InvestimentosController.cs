@@ -61,7 +61,7 @@ namespace DesafioCalculoCdb.Api.Controllers
         /// <param name="investimentoDto"></param>
         /// <returns></returns>
         [Microsoft.AspNetCore.Mvc.HttpPost]
-        public async Task<System.Web.Mvc.ActionResult> PostCalcularInvestimentos([Microsoft.AspNetCore.Mvc.FromBody] InvestimentoDto investimentoDto)
+        public async Task<System.Web.Mvc.ActionResult> PostCalcularInvestimentos([System.Web.Http.FromBody] InvestimentoDto investimentoDto)
         {
             if (investimentoDto == null || investimentoDto.Id == 0)
                 throw new Exception("É necessário selecionar um investimento!");

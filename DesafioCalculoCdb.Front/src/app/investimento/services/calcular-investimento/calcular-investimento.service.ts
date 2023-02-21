@@ -19,14 +19,10 @@ export class CalcularInvestimentoService {
 
   getAllInvestimentosAtivos(  ): Observable<InvestimentoDto[]> {  
     
-    return this.http.get<InvestimentoDto[]>(this.url + "GetRecuperarInvestimentosAtivos/").pipe(
-      map((res:InvestimentoDto[]) => res)
-    );;
+    return this.http.get<InvestimentoDto[]>(this.url + "GetRecuperarInvestimentosAtivos/");
   }
 
-  calcularInvestimento(investimento: InvestimentoDto): Observable<InvestimentoDto> {
-    return this.http.post<InvestimentoDto>(this.url + "PostCalcularInvestimentos/", investimento
-    , httpOptions);  
+  calcularInvestimento(investimentoDto: InvestimentoDto): Observable<InvestimentoDto> {
+    return this.http.post<InvestimentoDto>(this.url + "PostCalcularInvestimentos", investimentoDto);  
   }    
-
 }
