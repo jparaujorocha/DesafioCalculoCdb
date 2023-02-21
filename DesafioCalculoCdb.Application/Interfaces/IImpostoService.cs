@@ -5,7 +5,7 @@ namespace DesafioCalculoCdb.Application.Interfaces
 {
     public interface IImpostoService
     {
-        IEnumerable<ImpostoDTO> GetByIdInvestimento(int idInvestimento);
+        IEnumerable<ImpostoDto> GetByIdInvestimento(int idInvestimento);
         decimal CalculaImpostoLiquido(int idInvestimento, int prazoResgate);
     }
 }

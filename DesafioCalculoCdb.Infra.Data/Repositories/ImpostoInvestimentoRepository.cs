@@ -29,12 +29,13 @@ namespace DesafioCalculoCdb.Infra.Data.Repositories
 
         public IEnumerable<ImpostoInvestimento> GetByIdInvestimento(int idInvestimento)
         {
-            return _impostoInvestimentoContext.ImpostoInvestimentos.Include(a => a.IdInvestimento == idInvestimento).ToList();
+            return _impostoInvestimentoContext.ImpostoInvestimentos.Where(a => a.IdInvestimento == idInvestimento).
+                                                                    Include(b => b.Investimento).Include(b => b.Imposto).ToList();
         }
 
         public async Task<IEnumerable<ImpostoInvestimento>> GetImpostosInvestimentosAtivos()
         {
-            return await _impostoInvestimentoContext.ImpostoInvestimentos.Include(a => a.Ativo == true).ToListAsync();
+            return await _impostoInvestimentoContext.ImpostoInvestimentos.Where(a => a.Ativo).Include(b => b.Investimento).Include(b => b.Imposto).ToListAsync();
         }
     }
 }

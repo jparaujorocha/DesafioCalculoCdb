@@ -15,9 +15,9 @@ namespace DesafioCalculoCdb.Infra.Data.Repositories
             _impostoContext = context;
         }
 
-        public IEnumerable<Imposto> GetImpostosAtivosByIdImposto(IEnumerable<ImpostoInvestimento> listImpostoInvestimento)
+        public IEnumerable<Imposto> GetImpostosAtivosByIdImposto(IEnumerable<int> listIdImpostoInvestimento)
         {
-            return _impostoContext.Impostos.Include(a => a.Ativo == true && listImpostoInvestimento.Any(b => a.Id == b.IdImposto)).ToList();
+            return _impostoContext.Impostos.Where(a => a.Ativo && listIdImpostoInvestimento.Contains(a.Id)).Include(a => a.ImpostoInvestimentos).ToList();
         }
     }
 }

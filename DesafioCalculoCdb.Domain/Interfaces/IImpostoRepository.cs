@@ -5,6 +5,6 @@ namespace DesafioCalculoCdb.Domain.Interfaces
 {
     public interface IImpostoRepository
     {
-        IEnumerable<Imposto> GetImpostosAtivosByIdImposto(IEnumerable<ImpostoInvestimento> listImpostoInvestimento);
+        IEnumerable<Imposto> GetImpostosAtivosByIdImposto(IEnumerable<int> listIdImpostoInvestimento);
     }
 }

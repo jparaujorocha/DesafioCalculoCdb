@@ -1,6 +1,6 @@
 ﻿namespace DesafioCalculoCdb.Application.DTOs
 {
-    public class ImpostoDTO
+    public class ImpostoDto
     {
         public int Id { get; set; }
         public string Nome { get; set; }

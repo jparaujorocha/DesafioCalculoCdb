@@ -2,7 +2,7 @@
 
 namespace DesafioCalculoCdb.Application.DTOs
 {
-    public class ImpostoInvestimentoDTO
+    public class ImpostoInvestimentoDto
     {
         public int Id { get; set; }
 

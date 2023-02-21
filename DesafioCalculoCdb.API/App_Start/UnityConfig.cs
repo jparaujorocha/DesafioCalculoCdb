@@ -61,7 +61,7 @@ namespace DesafioCalculoCdb.Api
             container.RegisterType<IImpostoInvestimentoService, ImpostoInvestimentoService>();
             container.RegisterType<IInvestimentoService, InvestimentoService>();
             container.RegisterType<IImpostoService, ImpostoService>();
-            container.RegisterInstance<IMapper>(MapperConfig.Mapper);
+            container.RegisterInstance<IMapper>(MapperConfig.Mapper);            
             container.RegisterType<IController, InvestimentosController>();
 
             DependencyResolver.SetResolver(new Unity.Mvc5.UnityDependencyResolver(container));

@@ -13,8 +13,8 @@ namespace DesafioCalculoCdb.Application.Services
 {
     public class InvestimentoService : IInvestimentoService
     {
-        private IInvestimentoRepository _investimentoRepository;
-        private IImpostoService _impostoService;
+        private readonly IInvestimentoRepository _investimentoRepository;
+        private readonly IImpostoService _impostoService;
         private readonly IMapper _mapper;
 
         public InvestimentoService(IInvestimentoRepository investimentoRepository, IImpostoService impostoService, IMapper mapper)
@@ -44,21 +44,26 @@ namespace DesafioCalculoCdb.Application.Services
         {
             if (dadosInvestimento.PrazoResgateAplicacao <= 0)
                 throw new Exception("Prazo de resgate deve ser maior que zero.");
+
             if (dadosInvestimento.ValorInicialInvestimento <= 0)
-                throw new Exception("Valor Inicial do Investimento deve ser maior que zero.");
+            {
+                Exception exception = new Exception("Valor Inicial do Investimento deve ser maior que zero.");
+                throw exception;
+            }
+
             if (!VerificaExistenciaDeInvestimento(dadosInvestimento.Id))
                 throw new Exception("Investimento não encontrado no banco de dados.");
 
             switch (dadosInvestimento.Id)
             {
                 case (int)EnumInvestimento.CDB:
-                    CalculaCdb(dadosInvestimento, dadosInvestimento.PrazoResgateAplicacao, dadosInvestimento.ValorInicialInvestimento);
+                    await CalculaCdb(dadosInvestimento, dadosInvestimento.PrazoResgateAplicacao, dadosInvestimento.ValorInicialInvestimento);
                     break;
             }
         }
 
         [ExcludeFromCodeCoverage]
-        private void CalculaCdb(InvestimentoDto investimentoEntity, int prazoResgate, decimal valorInicial)
+        private async Task CalculaCdb(InvestimentoDto investimentoEntity, int prazoResgate, decimal valorInicial)
         {
             investimentoEntity.ListInvestimentoMensalDto = new List<InvestimentoMensalDto>(prazoResgate)
             {

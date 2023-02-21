@@ -10,7 +10,7 @@ namespace DesafioCalculoCdb.Api.Helper
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile(new DomainToDTOMappingProfile());
+                cfg.AddProfile(new DomainToDtoMappingProfile());
             });
             Mapper = config.CreateMapper();
         }

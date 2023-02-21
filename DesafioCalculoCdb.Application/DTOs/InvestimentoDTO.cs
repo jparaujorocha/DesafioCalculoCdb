@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DesafioCalculoCdb.Application.DTOs
 {
+    [Serializable]
     public class InvestimentoDto
     {
         public int Id { get; set; }

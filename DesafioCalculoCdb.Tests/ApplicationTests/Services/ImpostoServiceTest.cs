@@ -18,18 +18,18 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
     {
         private Moq.Mock<IImpostoRepository> _mockImpostoRepository;
         private Moq.Mock<IImpostoInvestimentoService> _mockImpostoInvestimentoService;
-        private IMapper _mockIMapper = CreateMockIMapper();
+        private readonly IMapper _mockIMapper = CreateMockIMapper();
 
         private static IMapper CreateMockIMapper()
         {
             //auto mapper configuration
             var mockMapper = new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile(new DomainToDTOMappingProfile());
+                cfg.AddProfile(new DomainToDtoMappingProfile());
             });
             return mockMapper.CreateMapper();
         }
-        private IEnumerable<ImpostoInvestimento> listImpostoInvestimentoMockValido = new List<ImpostoInvestimento>
+        private readonly IEnumerable<ImpostoInvestimento> listImpostoInvestimentoMockValido = new List<ImpostoInvestimento>
             {
                 new ImpostoInvestimento(1, 1, DateTime.Now, null, true, 1 ),
                 new ImpostoInvestimento(2, 1, DateTime.Now,null,true,2),
@@ -38,7 +38,7 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
                 new ImpostoInvestimento(1, 2, DateTime.Now, null, true, 5)
             };
 
-        private Imposto impostoMockValido = new Imposto("CDB6", 1, 22.5M, true, 1);
+        private readonly Imposto impostoMockValido = new Imposto("CDB6", 1, 22.5M, true, 1);
 
         private IEnumerable<Imposto> listImpostoMockValido = new List<Imposto>
             {
@@ -48,19 +48,19 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
                 new Imposto("CDB24PLUS", 1, 15, true, 4)
             };
 
-        private IEnumerable<ImpostoDTO> listImpostoDtoMockValido;
+        private IEnumerable<ImpostoDto> listImpostoDtoMockValido;
 
         [Fact]
         public void GetImpostoByIdInvestimento_IdInvestimentoExistente_RetornaListaObjeto()
         {
             _mockImpostoInvestimentoService = new Mock<IImpostoInvestimentoService>();
             _mockImpostoRepository = new Mock<IImpostoRepository>();
-            listImpostoDtoMockValido = _mockIMapper.Map<IEnumerable<ImpostoDTO>>(listImpostoMockValido);
-            var listImpostoInvestimentoDtoMockValido = _mockIMapper.Map<IEnumerable<ImpostoInvestimentoDTO>>(listImpostoInvestimentoMockValido);
+            listImpostoDtoMockValido = _mockIMapper.Map<IEnumerable<ImpostoDto>>(listImpostoMockValido);
+            var listImpostoInvestimentoDtoMockValido = _mockIMapper.Map<IEnumerable<ImpostoInvestimentoDto>>(listImpostoInvestimentoMockValido);
             listImpostoInvestimentoDtoMockValido = listImpostoInvestimentoDtoMockValido.Where(a => a.IdInvestimento == 1).Select(b => b);
 
             _mockImpostoInvestimentoService.Setup(a => a.GetByIdInvestimento(It.Is<int>(b => b == 1))).Returns(listImpostoInvestimentoDtoMockValido);
-            _mockImpostoRepository.Setup(a => a.GetImpostosAtivosByIdImposto(It.IsAny<IEnumerable<ImpostoInvestimento>>()))
+            _mockImpostoRepository.Setup(a => a.GetImpostosAtivosByIdImposto(It.IsAny<IEnumerable<int>>()))
                                                                              .Returns(listImpostoMockValido.Where(a => listImpostoInvestimentoDtoMockValido
                                                                              .Any(b => b.IdImposto == a.Id)).Select(c => c));
 
@@ -77,12 +77,12 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
             listImpostoMockValido = new List<Imposto>();
             _mockImpostoInvestimentoService = new Mock<IImpostoInvestimentoService>();
             _mockImpostoRepository = new Mock<IImpostoRepository>();
-            listImpostoDtoMockValido = null;
-            var listImpostoInvestimentoDtoMockValido = _mockIMapper.Map<IEnumerable<ImpostoInvestimentoDTO>>(listImpostoInvestimentoMockValido);
+            listImpostoDtoMockValido = new List<ImpostoDto>();
+            var listImpostoInvestimentoDtoMockValido = _mockIMapper.Map<IEnumerable<ImpostoInvestimentoDto>>(listImpostoInvestimentoMockValido);
             listImpostoInvestimentoDtoMockValido = listImpostoInvestimentoDtoMockValido.Where(a => a.IdInvestimento == 1).Select(b => b);
 
             _mockImpostoInvestimentoService.Setup(a => a.GetByIdInvestimento(It.Is<int>(b => b == 1))).Returns(listImpostoInvestimentoDtoMockValido);
-            _mockImpostoRepository.Setup(a => a.GetImpostosAtivosByIdImposto(It.IsAny<IEnumerable<ImpostoInvestimento>>())).Returns(listImpostoMockValido);
+            _mockImpostoRepository.Setup(a => a.GetImpostosAtivosByIdImposto(It.IsAny<IEnumerable<int>>())).Returns(listImpostoMockValido);
 
             IImpostoService impostoService = new ImpostoService(_mockImpostoRepository.Object, _mockImpostoInvestimentoService.Object, _mockIMapper);
 
@@ -107,10 +107,10 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
         {
             _mockImpostoInvestimentoService = new Mock<IImpostoInvestimentoService>();
             _mockImpostoRepository = new Mock<IImpostoRepository>();
-            var listImpostoInvestimentoDtoMockValido = _mockIMapper.Map<IEnumerable<ImpostoInvestimentoDTO>>(listImpostoInvestimentoMockValido);
+            var listImpostoInvestimentoDtoMockValido = _mockIMapper.Map<IEnumerable<ImpostoInvestimentoDto>>(listImpostoInvestimentoMockValido);
             _mockImpostoInvestimentoService.Setup(a => a.GetByIdInvestimento(It.Is<int>(b => b == 1))).Returns(listImpostoInvestimentoDtoMockValido);
 
-            _mockImpostoRepository.Setup(a => a.GetImpostosAtivosByIdImposto(It.IsAny<IEnumerable<ImpostoInvestimento>>()))
+            _mockImpostoRepository.Setup(a => a.GetImpostosAtivosByIdImposto(It.IsAny<IEnumerable<int>>()))
                                                                              .Returns(listImpostoMockValido.Where(a => listImpostoInvestimentoDtoMockValido
                                                                              .Any(b => b.IdImposto == a.Id)).Select(c => c));
 
@@ -128,7 +128,7 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
         {
             _mockImpostoInvestimentoService = new Mock<IImpostoInvestimentoService>();
             _mockImpostoRepository = new Mock<IImpostoRepository>();
-            var listImpostoInvestimentoDtoMockValido = _mockIMapper.Map<IEnumerable<ImpostoInvestimentoDTO>>(listImpostoInvestimentoMockValido);
+            var listImpostoInvestimentoDtoMockValido = _mockIMapper.Map<IEnumerable<ImpostoInvestimentoDto>>(listImpostoInvestimentoMockValido);
             _mockImpostoInvestimentoService.Setup(a => a.GetByIdInvestimento(It.Is<int>(b => b == 1))).Returns(listImpostoInvestimentoDtoMockValido);
 
             IImpostoService impostoService = new ImpostoService(_mockImpostoRepository.Object, _mockImpostoInvestimentoService.Object, _mockIMapper);
@@ -144,7 +144,7 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
         {
             _mockImpostoInvestimentoService = new Mock<IImpostoInvestimentoService>();
             _mockImpostoRepository = new Mock<IImpostoRepository>();
-            var listImpostoInvestimentoDtoMockValido = _mockIMapper.Map<IEnumerable<ImpostoInvestimentoDTO>>(listImpostoInvestimentoMockValido);
+            var listImpostoInvestimentoDtoMockValido = _mockIMapper.Map<IEnumerable<ImpostoInvestimentoDto>>(listImpostoInvestimentoMockValido);
             _mockImpostoInvestimentoService.Setup(a => a.GetByIdInvestimento(It.Is<int>(b => b == 1))).Returns(listImpostoInvestimentoDtoMockValido);
 
 
@@ -161,7 +161,7 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
         {
             _mockImpostoInvestimentoService = new Mock<IImpostoInvestimentoService>();
             _mockImpostoRepository = new Mock<IImpostoRepository>();
-            var listImpostoInvestimentoDtoMockValido = _mockIMapper.Map<IEnumerable<ImpostoInvestimentoDTO>>(listImpostoInvestimentoMockValido);
+            var listImpostoInvestimentoDtoMockValido = _mockIMapper.Map<IEnumerable<ImpostoInvestimentoDto>>(listImpostoInvestimentoMockValido);
             _mockImpostoInvestimentoService.Setup(a => a.GetByIdInvestimento(It.Is<int>(b => b == 1))).Returns(listImpostoInvestimentoDtoMockValido);
 
 

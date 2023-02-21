@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DesafioCalculoCdb.Infra.Data.Migrations
 {
-    public partial class Initial : Migration
+    public partial class DesafioCalculo : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -94,8 +94,8 @@ namespace DesafioCalculoCdb.Infra.Data.Migrations
                 columns: new[] { "Id", "Ativo", "DataDeCriacao", "DataDeFinalizacao", "Nome", "ValorTaxaBanco", "ValorTaxaInvestimento" },
                 values: new object[,]
                 {
-                    { 1, true, new DateTime(2023, 2, 18, 3, 19, 46, 370, DateTimeKind.Local).AddTicks(6930), null, "CDB", 108m, 0.9m },
-                    { 2, false, new DateTime(2023, 2, 18, 3, 19, 46, 371, DateTimeKind.Local).AddTicks(6904), null, "OUTROS", 112m, 0.1m }
+                    { 1, true, new DateTime(2023, 2, 20, 13, 12, 40, 248, DateTimeKind.Local).AddTicks(663), null, "CDB", 108m, 0.9m },
+                    { 2, false, new DateTime(2023, 2, 20, 13, 12, 40, 249, DateTimeKind.Local).AddTicks(626), null, "OUTROS", 112m, 0.1m }
                 });
 
             migrationBuilder.InsertData(
@@ -123,10 +123,10 @@ namespace DesafioCalculoCdb.Infra.Data.Migrations
                 columns: new[] { "Id", "Ativo", "DataFim", "DataInicio", "IdImposto", "IdInvestimento" },
                 values: new object[,]
                 {
-                    { 1, true, null, new DateTime(2023, 2, 18, 3, 19, 46, 365, DateTimeKind.Local).AddTicks(7063), 1, 1 },
-                    { 2, true, null, new DateTime(2023, 2, 18, 3, 19, 46, 368, DateTimeKind.Local).AddTicks(6985), 2, 1 },
-                    { 3, true, null, new DateTime(2023, 2, 18, 3, 19, 46, 368, DateTimeKind.Local).AddTicks(6985), 3, 1 },
-                    { 4, true, null, new DateTime(2023, 2, 18, 3, 19, 46, 368, DateTimeKind.Local).AddTicks(6985), 4, 1 }
+                    { 1, true, null, new DateTime(2023, 2, 20, 13, 12, 40, 237, DateTimeKind.Local).AddTicks(952), 1, 1 },
+                    { 2, true, null, new DateTime(2023, 2, 20, 13, 12, 40, 242, DateTimeKind.Local).AddTicks(807), 2, 1 },
+                    { 3, true, null, new DateTime(2023, 2, 20, 13, 12, 40, 242, DateTimeKind.Local).AddTicks(807), 3, 1 },
+                    { 4, true, null, new DateTime(2023, 2, 20, 13, 12, 40, 242, DateTimeKind.Local).AddTicks(807), 4, 1 }
                 });
 
             migrationBuilder.CreateIndex(

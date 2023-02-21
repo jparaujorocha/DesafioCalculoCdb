@@ -39,41 +39,44 @@ namespace DesafioCalculoCdb.Application.Services
             if (prazoResgate <= 0)
                 throw new System.Exception("Prazo de resgate deve ser maior que zero.");
 
-            IEnumerable<ImpostoDTO> listImpostosCdb = GetByIdInvestimento((int)EnumInvestimento.CDB);
+            IEnumerable<ImpostoDto> listImpostosCdb = GetByIdInvestimento((int)EnumInvestimento.CDB);
+            ImpostoDto impostoDto;
 
-            if (listImpostosCdb == null || listImpostosCdb.Count() == 0)
+            if (listImpostosCdb == null || !listImpostosCdb.Any())
                 throw new System.Exception("Impostos do Investimento CDB não encontrados.");
 
             if (prazoResgate <= 6)
             {
-                return listImpostosCdb.Where(a => a.Id == (int)EnumImposto.CDB6).Select(b => b).FirstOrDefault().Valor;
+                impostoDto = listImpostosCdb.Where(a => a.Id == (int)EnumImposto.CDB6).Select(b => b).FirstOrDefault();
             }
             else if (prazoResgate >= 7 && prazoResgate <= 12)
             {
-                return listImpostosCdb.Where(a => a.Id == (int)EnumImposto.CDB12).Select(b => b).FirstOrDefault().Valor;
+                impostoDto = listImpostosCdb.Where(a => a.Id == (int)EnumImposto.CDB12).Select(b => b).FirstOrDefault();
             }
             else if (prazoResgate >= 13 && prazoResgate <= 24)
             {
-                return listImpostosCdb.Where(a => a.Id == (int)EnumImposto.CDB24).Select(b => b).FirstOrDefault().Valor;
+                impostoDto = listImpostosCdb.Where(a => a.Id == (int)EnumImposto.CDB24).Select(b => b).FirstOrDefault();
             }
             else
             {
-                return listImpostosCdb.Where(a => a.Id == (int)EnumImposto.CDB24Plus).Select(b => b).FirstOrDefault().Valor;
+                impostoDto = listImpostosCdb.Where(a => a.Id == (int)EnumImposto.CDB24Plus).Select(b => b).FirstOrDefault();
             }
+
+            return impostoDto == null ? throw new System.Exception("Nenhum imposto de CDB válido encontrado.") : impostoDto.Valor;
         }
 
-        public IEnumerable<ImpostoDTO> GetByIdInvestimento(int idInvestimento)
+        public IEnumerable<ImpostoDto> GetByIdInvestimento(int idInvestimento)
         {
             var listImpostoInvestimentoDto = _impostoInvestimentoService.GetByIdInvestimento(idInvestimento);
 
-            if (listImpostoInvestimentoDto == null || listImpostoInvestimentoDto.Count() == 0)
-                return null;
+            if (listImpostoInvestimentoDto == null || !listImpostoInvestimentoDto.Any())
+                return new List<ImpostoDto>();
 
             var listImpostoInvestimento = _mapper.Map<IEnumerable<ImpostoInvestimento>>(listImpostoInvestimentoDto);
 
-            var listImposto = _impostoRepository.GetImpostosAtivosByIdImposto(listImpostoInvestimento);
+            var listImposto = _impostoRepository.GetImpostosAtivosByIdImposto(listImpostoInvestimento.Select(a => a.Id).ToList());
 
-            var listImpostoDto = _mapper.Map<IEnumerable<ImpostoDTO>>(listImposto);
+            var listImpostoDto = _mapper.Map<IEnumerable<ImpostoDto>>(listImposto);
 
             return listImpostoDto;
         }

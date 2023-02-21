@@ -18,14 +18,14 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
     {
         private Moq.Mock<IInvestimentoRepository> _mockInvestimentoRepository;
         private Moq.Mock<IImpostoService> _mockImpostoService;
-        private IMapper _mockIMapper = CreateMockIMapper();
+        private readonly IMapper _mockIMapper = CreateMockIMapper();
 
         private static IMapper CreateMockIMapper()
         {
             //auto mapper configuration
             var mockMapper = new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile(new DomainToDTOMappingProfile());
+                cfg.AddProfile(new DomainToDtoMappingProfile());
             });
             return mockMapper.CreateMapper();
         }
@@ -35,7 +35,7 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
                  new Investimento("OUTRO", DateTime.Now, null, 0.1m, 10,false, 2)
             };
 
-        private IEnumerable<Imposto> listImpostoMockValido = new List<Imposto>
+        private readonly IEnumerable<Imposto> listImpostoMockValido = new List<Imposto>
             {
                 new Imposto("CDB6", 1, 22.5M, true, 1),
                 new Imposto("CDB12", 1, 20, true, 2),
@@ -43,13 +43,12 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
                 new Imposto("CDB24PLUS", 1, 15, true, 4)
             };
 
-        private Investimento investimentoMockValido = new Investimento("CDB", DateTime.Now, null, 0.9m, 108, true, 1);
+        private readonly Investimento investimentoMockValido = new Investimento("CDB", DateTime.Now, null, 0.9m, 108, true, 1);
 
         private IEnumerable<InvestimentoDto> listInvestimentoDtoMockValido;
         private InvestimentoDto investimentoDtoMockValido;
 
-        private IEnumerable<ImpostoDTO> listImpostoDtoMockValido;
-
+        private IEnumerable<ImpostoDto> listImpostoDtoMockValido;
 
         [Fact]
         public void GetInvestimentosAtivos_SemParametro_RetornaListaObjeto()
@@ -121,39 +120,41 @@ namespace DesafioCalculoCdb.Tests.ApplicationTests.Services
         }
 
         [Theory]
-        [InlineData(1, 2, 100, 22.5, 79.01)]
-        [InlineData(1, 6, 1, 22.5, 0.82)]
-        [InlineData(1, 7, 10, 20, 8.56)]
-        [InlineData(1, 10, 55, 20, 48.47)]
-        [InlineData(1, 12, 158213.00, 20, 142148.95)]
-        [InlineData(1, 13, 125874.00, 17.5, 117761.26)]
-        [InlineData(1, 17, 33, 17.5, 32.09)]
-        [InlineData(1, 24, 2000, 17.5, 2081.17)]
-        [InlineData(1, 25, 35, 15, 37.89)]
-        [InlineData(1, 100, 4, 15, 8.94)]
-        public void CalcularImposto_ParametrosValidos_RetornarValorEsperado(int idInvestimento, int prazoResgate, decimal valorInicial, decimal valorImposto, decimal valorEsperadoRetorno)
+        [InlineData(1, 2, 108.00, 0.90, 100, 22.5, 79.01)]
+        [InlineData(1, 6, 108.00, 0.90, 1, 22.5, 0.82)]
+        [InlineData(1, 7, 108.00, 0.90, 10, 20, 8.56)]
+        [InlineData(1, 10, 108.00, 0.90, 55, 20, 48.47)]
+        [InlineData(1, 12, 108.00, 0.90, 158213.00, 20, 142148.95)]
+        [InlineData(1, 13, 108.00, 0.90, 125874.00, 17.5, 117761.26)]
+        [InlineData(1, 17, 108.00, 0.90, 33, 17.5, 32.09)]
+        [InlineData(1, 24, 108.00, 0.90, 2000, 17.5, 2081.17)]
+        [InlineData(1, 25, 108.00, 0.90, 35, 15, 37.89)]
+        [InlineData(1, 100, 108.00, 0.90, 4, 15, 8.94)]
+        public void CalcularImposto_ParametrosValidos_RetornarValorEsperado(int idInvestimento, int prazoResgate, decimal valorTaxaBanco, decimal valorTaxaInvestimento, decimal valorInicial, decimal valorImposto, decimal valorEsperadoRetorno)
         {
             _mockInvestimentoRepository = new Mock<IInvestimentoRepository>();
             _mockImpostoService = new Mock<IImpostoService>();
             listInvestimentoDtoMockValido = _mockIMapper.Map<IEnumerable<InvestimentoDto>>(listInvestimentoMockValido);
-            listImpostoDtoMockValido = _mockIMapper.Map<IEnumerable<ImpostoDTO>>(listImpostoMockValido);
+            listImpostoDtoMockValido = _mockIMapper.Map<IEnumerable<ImpostoDto>>(listImpostoMockValido);
 
             investimentoDtoMockValido = new InvestimentoDto
             {
                 Id = idInvestimento,
                 PrazoResgateAplicacao = prazoResgate,
-                ValorInicialInvestimento = valorInicial
+                ValorInicialInvestimento = valorInicial,
+                ValorTaxaBanco = valorTaxaBanco,
+                ValorTaxaInvestimento = valorTaxaInvestimento
             };
 
-            _mockInvestimentoRepository.Setup(a => a.GetById(It.Is<int>(b => b == 1))).Returns(Task.FromResult(investimentoMockValido));
+            _mockInvestimentoRepository.Setup(a => a.VerificaExistenciaInvestimento(It.Is<int>(b => b == 1))).Returns(true);
             _mockImpostoService.Setup(a => a.CalculaImpostoLiquido(idInvestimento, prazoResgate)).Returns(valorImposto);
 
             IInvestimentoService investimentoService = new InvestimentoService(_mockInvestimentoRepository.Object, _mockImpostoService.Object,
                                                                                                     _mockIMapper);
 
-            var resultado = investimentoService.CalculaSimulacaoInvestimentos(investimentoDtoMockValido);
+            investimentoService.CalculaSimulacaoInvestimentos(investimentoDtoMockValido);
 
-            Assert.Equal(valorEsperadoRetorno, Math.Round(resultado.Result.ValorFinalInvestimento, 2));
+            Assert.Equal(valorEsperadoRetorno, Math.Round(investimentoDtoMockValido.ValorFinalInvestimento, 2));
         }
 
         [Theory]

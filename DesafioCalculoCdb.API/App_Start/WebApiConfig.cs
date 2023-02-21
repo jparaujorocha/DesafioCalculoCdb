@@ -1,4 +1,5 @@
 ﻿using DesafioCalculoCdb.Api.Helper;
+using System;
 using System.Web.Http;
 
 namespace DesafioCalculoCdb.Api
@@ -7,13 +8,18 @@ namespace DesafioCalculoCdb.Api
     {
         public static void Register(HttpConfiguration config)
         {
-            // Configuração e serviços de API Web
-
-            // Rotas de API Web
             config.MapHttpAttributeRoutes();
             
             MapperConfig.RegisterProfiles();
             UnityConfig.RegistraComponentes(config);
+            SwaggerConfig.Register(config);
+
+            config.Formatters.JsonFormatter.MediaTypeMappings.Add(new System.Net.Http.Formatting.
+                              RequestHeaderMapping("Accept",
+                              "text/html",
+                              StringComparison.InvariantCultureIgnoreCase,
+                              true,
+                              "application/json"));
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

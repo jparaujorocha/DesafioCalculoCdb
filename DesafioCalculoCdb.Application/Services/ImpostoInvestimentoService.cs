@@ -17,23 +17,23 @@ namespace DesafioCalculoCdb.Application.Services
             _impostoInvestimentoRepository = impostoInvestimentoRepository;
             _mapper = mapper;
         }
-        public async Task<ImpostoInvestimentoDTO> GetById(int id)
+        public async Task<ImpostoInvestimentoDto> GetById(int id)
         {
             var impostoInvestimentoEntity = await _impostoInvestimentoRepository.GetById(id);
-            return _mapper.Map<ImpostoInvestimentoDTO>(impostoInvestimentoEntity);
+            return _mapper.Map<ImpostoInvestimentoDto>(impostoInvestimentoEntity);
              
         }
 
-        public IEnumerable<ImpostoInvestimentoDTO> GetByIdInvestimento(int idInvestimento)
+        public IEnumerable<ImpostoInvestimentoDto> GetByIdInvestimento(int idInvestimento)
         {
             var listImpostoInvestimento = _impostoInvestimentoRepository.GetByIdInvestimento(idInvestimento);
-            return _mapper.Map<IEnumerable<ImpostoInvestimentoDTO>>(listImpostoInvestimento);
+            return _mapper.Map<IEnumerable<ImpostoInvestimentoDto>>(listImpostoInvestimento);
         }
 
-        public async Task<IEnumerable<ImpostoInvestimentoDTO>> GetImpostoInvestimentosAtivos()
+        public async Task<IEnumerable<ImpostoInvestimentoDto>> GetImpostoInvestimentosAtivos()
         {
             var listImpostoInvestimento = await _impostoInvestimentoRepository.GetImpostosInvestimentosAtivos();
-            return _mapper.Map<IEnumerable<ImpostoInvestimentoDTO>>(listImpostoInvestimento);
+            return _mapper.Map<IEnumerable<ImpostoInvestimentoDto>>(listImpostoInvestimento);
         }
     }
 }

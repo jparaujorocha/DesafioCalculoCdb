@@ -24,7 +24,6 @@ namespace DesafioCalculoCdb.Infra.Data.Repositories
 
         public bool VerificaExistenciaInvestimento(int idInvestimento)
         {
-
             return _investimentoContext.Investimentos.Any(a => a.Id == idInvestimento);
         }
 
